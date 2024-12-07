@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e16d50, hsl(26, 100%, 73%)); 
+        }
+        .form-container {
+            gap: 20px;
+            padding: 20px;
+            width: 620px;
+            background: linear-gradient(to right, #fc967d, hsl(26, 93%, 77%));
+            padding: 20px;
+            padding-right: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            padding: 10px;
+            margin-right: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="emailgm"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #e16d50, hsl(26, 100%, 73%));
+            border: 1px solid #e16d50;
+            outline: none;
+            color: white;
+        }
+        .radio-group {
+            display: flex;
+            margin: 1px;
+            align-items: center;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: rgb(201, 201, 201);
+            border: none;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        button:hover {
+            background-color: #0d70d3;
+        }
+        label,input,button{
+            padding: 10px;
+        }
+        button{
+            margin-top: 6px;
+            text-align: center;
+        }
+        form{
+            padding: 20px;
+        }
+        #lichessr,#chessr{
+            margin-bottom: 9px;
+        }
+        h3{
+            margin-bottom: 25px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <form method="post" action="/create">
+            
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+   
+                <label for="email">Email of Your Chess Account:</label>
+                <input type="email" id="email" name="email" required>
+            
+   
+                <label for="password">Password of Your ChessAccount:</label>
+                <input type="password" id="password" name="password" required>
+            
+            
+                <label for="rating">Rating of Your Chess Account:</label>
+                <input type="number" id="rating" name="rating" required>
+            
+                <label for="mobile">Price Of Your Chess Account In INR:</label>
+                <input type="number" id="mobile" name="price" required>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="number" id="mobile" name="mobile" required>
+            
+            
+                <label>Platform:</label>
+                <div class="radio-group">
+                    <input id="lichessr" type="radio" id="lichess" name="platform" value="lichess" required>
+                    <label for="lichess">lichess</label>
+                    <h3>|</h3>    
+                    <input id="chessr" type="radio" id="chesscom" name="platform" value="chesscom">
+                    <label for="chesscom">chess.com</label>
+                </div>
+                <button type="submit">Submit</button>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

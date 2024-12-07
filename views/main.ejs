@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessDeals</title>
+    <script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, hsl(26, 100%, 73%));
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        h1 {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        button, input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #fff;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover, input[type="submit"]:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(to right, #ff5a31, hsl(26, 95%, 57%));
+            padding: 10px;
+            border-radius: 5%;
+            margin-left: 10px;
+        }
+        /* .top-right{} */
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="top-right">
+            <% if (user) { %>
+                <p>Hello, <%= user %>!</p>
+                <a href="/myposts">My Posts</a>
+                <a href="/signout">Signout</a>
+            <% } else { %>
+                <a href="/signupmain">Signup</a>
+                <a href="/loginmain">Login</a>
+            <% } %>
+        </div>
+        <h1>ChessDeals</h1>
+        <p>Your ultimate destination for the best and cheapest chess account deals!</p>
+        <p>Joins two chess lovers and their accounts &#128516 !</p>
+        <div class="button-container">
+            <a href="/signup">Sell your Chess Account</a>
+            <a href="/whichweb">Find a Chess Account</a>
+        </div>
+    </div>
+    <script>
+        gsap.from(".container h1", { duration: 1, y: -50, opacity: 0 });
+        gsap.from(".container p", { duration: 1, delay: 0.5, y: 50, opacity: 0 });
+        gsap.from(".button-container a", { duration: 1, delay: 1, y: 50, opacity: 0, stagger: 0.1 });
+        gsap.from(".top-right a, .top-right span", { duration: 1, delay: 1.5, y: -50, opacity: 0, stagger: 0.2 });
+    </script>
+</body>
+</html>
