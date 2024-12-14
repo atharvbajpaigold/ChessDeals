@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessDeals Signup</title>
+    <script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, hsl(26, 100%, 73%));
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 20px;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #fc967d, hsl(26, 93%, 77%));
+            width: 40%;
+            display: grid;
+            place-items: center;
+            padding: 1.5vw 4vh;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+            border-radius: 5px;
+            background: linear-gradient(to right, #e16d50, hsl(26, 100%, 73%));
+            border: 1px solid #e16d50;
+            outline: none;
+            color: white;
+        }
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #ff5a31;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="submit"]:hover {
+            background-color: hsl(26, 95%, 57%);
+        }
+        input{
+            margin: 0.5vw 1vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Login to ChessDeals</h1> 
+        <form action="/login" method="post">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <script>
+        gsap.from(".container h1", { duration: 1, y: -50, opacity: 0 }); 
+        gsap.from("form", { duration: 1, delay: 0.5, opacity: 0, scale: 0.8 });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, hsl(26, 100%, 73%));
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .error-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #ff5a31;
+        }
+        p {
+            color: #ff7e5f;
+        }
+        .back-button {
+            margin-top: 20px;
+            background: linear-gradient(to right, #ff5a31, hsl(26, 95%, 57%));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .back-button:hover {
+            background: #ff7e5f;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Something went wrong!</h1>
+        <p><%= errorMessage %></p>
+        <button class="back-button" onclick="window.location.href='/'">Go Back</button>
+    </div>
+</body>
+</html>

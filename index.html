@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Timetable</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0 0 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ffffff;
+            text-align: center;
+        }
+        th {
+            background-color: #2a5298;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+        button:hover:enabled {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ChessDeals Server Timetable</h1>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Opening Time</th>
+                <th>Closing Time</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>03:00 PM</td>
+                <td>09:00 PM</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>03:00 PM</td>
+                <td>09:00 PM</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>03:00 PM</td>
+                <td>09:00 PM</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>03:00 PM</td>
+                <td>09:00 PM</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>03:00 PM</td>
+                <td>09:00 PM</td>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td>03:00 PM</td>
+                <td>09:00 PM</td>
+            </tr>
+            <tr>
+                <td>Sunday</td>
+                <td>09:00 AM</td>
+                <td>09:00 PM</td>
+            </tr>
+        </table>
+        <button id="accessButton" onclick="window.open('http://192.168.1.6:3000/', 'newWindow')" target="_blank">Access</button>
+    </div>
+    <script>
+        function checkAccessTime() {
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const timetable = {
+                "Monday": { open: "15:00", close: "21:00" },
+                "Tuesday": { open: "15:00", close: "21:00" },
+                "Wednesday": { open: "15:00", close: "21:00" },
+                "Thursday": { open: "15:00", close: "21:00" },
+                "Friday": { open: "15:00", close: "21:00" },
+                "Saturday": { open: "15:00", close: "21:00" },
+                "Sunday": { open: "09:00", close: "21:00" },
+            };
+
+            const now = new Date();
+            const day = days[now.getDay()];
+            const currentTime = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+            const openTime = timetable[day].open;
+            const closeTime = timetable[day].close;
+
+            if (currentTime >= openTime && currentTime <= closeTime) {
+                document.getElementById('accessButton').disabled = false;
+            } else {
+                document.getElementById('accessButton').disabled = true;
+            }
+        }
+
+        function runBatchFileAndRedirect() {
+            fetch('/run-batch')
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    window.location.href = "http://localhost:3000"; // Replace with your target URL
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        checkAccessTime();
+        setInterval(checkAccessTime, 60000); // Check every minute
+    </script>     
+</body>
+</html>
