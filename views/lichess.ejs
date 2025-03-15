@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles</title>
+    <style>
+        body {
+            padding: 2%;
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e16d50, hsl(26, 100%, 73%));    
+        }
+        .card {
+            background: linear-gradient(to right, #fc967d, hsl(26, 93%, 77%));
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .rating {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #181818;
+        }
+        .email {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #454545;
+        }
+        .mobile {
+            font-size: 16px;
+            color: #4b4b4b;
+            margin-top: 20px;
+            border-top: 1px solid #5f5f5f;
+            padding-top: 10px;
+        }
+        h1{
+            font-size: 30px;
+            color: white;
+        }
+        #cardcont{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        .price{
+            color: #3d3d3d;
+            margin-bottom: 10px;
+        }
+        #a{
+            color: #0048ff;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/home" style = "color: rgb(0, 94, 255);">Return To Home Page</a>
+    <h1>All Accounts Of Lichess.org</h1>
+
+    <div id="cardcont">
+
+        <% users.forEach(function(user) { %> <% 
+            if(user.platform === "lichess") {%> 
+                <div class="card"> 
+                    <div class="name"><%= user.name %></div> 
+                    <div class="rating">Rating: <%= user.rating %></div> 
+                    <div class="email">Email: <%= user.email %></div>
+                    <div class="price">Price: ₹ <%= user.price %></div>
+                    <div class="mobile">Mobile: <%= user.mobile %></div> 
+                </div> <% }%> <%}); 
+            
+        %>
+
+    </div>
+
+
+    
+    <script>
+
+
+        alert("Sorry, but i cannot integrate payment method as i am below 18. But i promise you i will add it when i will be < 18.")
+
+    </script>
+    
+</body>
+</html>

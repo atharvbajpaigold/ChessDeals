@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessDeals</title>
+    <script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, hsl(26, 100%, 73%));
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure full screen height */
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            flex-grow: 1; /* Ensure the content takes up available space */
+        }
+        .dropdown {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .dropbtn {
+            background-color: #ff5a31;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        .dropbtn:hover {
+            background-color: #ff7e5f;
+            transform: scale(1.05);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #ff7e5f;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+        }
+        .dropdown-content a, .dropdown-content form {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background: linear-gradient(to right, #ff5a31, hsl(26, 95%, 57%));
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dropdown-content a:hover, .dropdown-content form:hover {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        h1 {
+            font-size: 4.5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(to right, #ff5a31, hsl(26, 95%, 57%));
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            background-color: #ff7e5f;
+            transform: scale(1.05);
+        }
+        .show {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dropdown">
+            <button class="dropbtn" id="dropdownToggle">&#x22EE;</button>
+            <div id="myDropdown" class="dropdown-content">
+                <% if (user) { %>
+                    <p style="padding: 12px 16px; color: white;">Hello, <%= user %>!</p>
+                    <a href="/myposts">My Posts</a>
+                    <a href="/signout">Signout</a>
+                    <form action="/deleteAccount" method="POST" style="margin: 0;">
+                        <button type="submit" style="border: none; background: none; padding: 0; color: white; cursor: pointer;">Delete Account</button>
+                    </form>
+                <% } else { %>
+                    <a href="/signupmain">Signup</a>
+                    <a href="/loginmain">Login</a>
+                <% } %>
+            </div>
+        </div>
+        <h1>ChessDeals</h1>
+        <p>Your ultimate destination for the best and cheapest chess account deals!</p>
+        <p>Join two chess lovers and their accounts &#128516!</p>
+        <div class="button-container">
+            <a href="/sellaccount">Sell your Chess Account</a>
+            <a href="/whichweb">Find a Chess Account</a>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown toggle functionality
+        document.getElementById('dropdownToggle').addEventListener('click', function() {
+            document.getElementById('myDropdown').classList.toggle('show');
+        });
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // GSAP animations for page load
+        gsap.from(".container h1", { duration: 1, y: -50, opacity: 0 });
+        gsap.from(".container p", { duration: 1, delay: 0.5, y: 50, opacity: 0 });
+        gsap.from(".button-container a", { duration: 1, delay: 1, y: 50, opacity: 0, stagger: 0.1 });
+        gsap.from(".dropdown", { duration: 1, delay: 1.5, y: -50, opacity: 0, stagger: 0.2 });
+    </script>
+</body>
+</html>
